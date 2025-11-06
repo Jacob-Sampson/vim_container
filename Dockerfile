@@ -34,7 +34,15 @@ COPY .vimrc /root/.vimrc
 COPY .tmux.conf /root/.tmux.conf
 
 # 6. Preinstall vim plugins (non-fatal)
-RUN vim +'PlugInstall --sync' +qa || true
+RUN curl -fLo $USER_HOME/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      
+RUN bash -c "export HOME=$USER_HOME && vim +'PlugInstall --sync' +qa || true"
+
+RUN mkdir -p $USER_HOME/.config/coc/extensions && \
+    cd $USER_HOME/.config/coc/extensions && \
+    npm install coc-python coc-vimtex --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod || true
+
 
 # 7. Quality-of-life settings
 RUN echo "alias vi='vim'" >> /root/.bashrc && \
