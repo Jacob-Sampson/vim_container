@@ -41,7 +41,8 @@ RUN vim -Nu "$HOME/.vimrc" +PlugInstall +qall || true
 
 RUN mkdir -p $HOME/.config/coc/extensions && \
     cd $HOME/.config/coc/extensions && \
-    npm install coc-python coc-vimtex --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod || true
+    echo '{"dependencies": {"coc-python": "*", "coc-vimtex": "*", "coc-snippets": "*"}}' > package.json && \
+    npm install
 
 # 7. Quality-of-life settings
 RUN echo "alias vi='vim'" >> $HOME/.bashrc && \
