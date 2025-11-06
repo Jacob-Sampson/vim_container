@@ -33,7 +33,7 @@ RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 COPY .vimrc /root/.vimrc
 COPY .tmux.conf /root/.tmux.conf
 
-RUN vim -E -s -u "$HOME/.vimrc" +PlugInstall +qal
+RUN vim -E -s -u "$HOME/.vimrc" +PlugInstall +qall
 
 RUN mkdir -p $HOME/.config/coc/extensions && \
     cd $HOME/.config/coc/extensions && \
