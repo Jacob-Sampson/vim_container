@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: yourusername/vim-sampson:latest
+          tags: jacobsampson/vim-sampson:latest
