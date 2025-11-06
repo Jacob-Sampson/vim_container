@@ -27,22 +27,17 @@ COPY environment.yml /tmp/environment.yml
 RUN conda env update -n base -f /tmp/environment.yml && conda clean -afy
 
 # 5. Install vim-plug and configs
-RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
+RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 COPY .vimrc /root/.vimrc
 COPY .tmux.conf /root/.tmux.conf
 
-# 6. Preinstall vim plugins (non-fatal)
-RUN curl -fLo $USER_HOME/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      
-RUN bash -c "export HOME=$USER_HOME && vim +'PlugInstall --sync' +qa || true"
+RUN vim -E -s -u "$HOME/.vimrc" +PlugInstall+qa 
 
-RUN mkdir -p $USER_HOME/.config/coc/extensions && \
-    cd $USER_HOME/.config/coc/extensions && \
+RUN mkdir -p $HOME/.config/coc/extensions && \
+    cd $HOME/.config/coc/extensions && \
     npm install coc-python coc-vimtex --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod || true
-
 
 # 7. Quality-of-life settings
 RUN echo "alias vi='vim'" >> /root/.bashrc && \
