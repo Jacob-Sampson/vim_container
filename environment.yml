@@ -1,0 +1,21 @@
+name: base
+channels:
+  - conda-forge
+dependencies:
+  - vim
+  - tmux
+  - nodejs
+  - git
+  - python
+  - conda[version='>=25.3.0']
+  - mamba[version='>=2.1.1']
+  - pip
+  - ipython
+  - pandas
+  - matplotlib
+  - pandoc
+  - wkhtmltopdf
+  - markdown
+  - scipy
+  - ipykernel
+prefix: /home/b65637js/miniforge3
