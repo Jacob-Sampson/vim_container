@@ -1,12 +1,16 @@
 name: base
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   - vim
   - tmux
   - nodejs
   - git
   - python
+  - pybedtools
+  - bedtools
+  - xclip
   - conda[version='>=25.3.0']
   - mamba[version='>=2.1.1']
   - pip
@@ -18,4 +22,3 @@ dependencies:
   - markdown
   - scipy
   - ipykernel
-prefix: /home/b65637js/miniforge3
