@@ -22,3 +22,4 @@ dependencies:
   - markdown
   - scipy
   - ipykernel
+  - pyhpo
