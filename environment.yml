@@ -3,9 +3,9 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - vim
-  - tmux
   - nodejs
+  - upsetplot
+  - seaborn
   - git
   - python
   - pybedtools
