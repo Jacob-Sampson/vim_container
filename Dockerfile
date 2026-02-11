@@ -14,13 +14,14 @@ ENV HOME=${HOME:-$BUILD_HOME} \
 # 1. Install essential system tools and fonts
 RUN apt-get update && apt-get install -y \
       git curl wget fzf zathura \
+      vim tmux \
       texlive-latex-base texlive-latex-extra \
       texlive-fonts-recommended texlive-science texlive-xetex \
       && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 2. Install core conda packages directly in base
 RUN conda install -y \
-      vim tmux python=3.11 nodejs \
+      python=3.11 nodejs \
       && conda clean -afy
 
 # 3. Copy your environment.yml
