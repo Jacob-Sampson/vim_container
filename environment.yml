@@ -15,7 +15,7 @@ dependencies:
   - mamba[version='>=2.1.1']
   - pip
   - ipython
-  - pandas
+  - pandas==2.3.3
   - matplotlib
   - pandoc
   - wkhtmltopdf
