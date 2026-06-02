@@ -25,3 +25,5 @@ dependencies:
   - scikit-learn
   - pyhpo
   - pyliftover
+  - pip:
+    - gwplot
