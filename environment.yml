@@ -26,3 +26,4 @@ dependencies:
   - adjusttext
   - scikit-learn
   - pyhpo
+  - pyliftover
